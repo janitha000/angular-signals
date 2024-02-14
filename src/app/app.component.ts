@@ -1,10 +1,12 @@
 import { Component, computed, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { sharedSignal } from './signals';
+import { SecondaryComponent } from './secondary/secondary.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SecondaryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -18,6 +20,7 @@ export class AppComponent {
     age: '30',
   });
   renderVal = signal('test123');
+  sharedSignal = sharedSignal;
 
   constructor() {
     effect(() => {
@@ -29,6 +32,9 @@ export class AppComponent {
   increment() {
     console.log('incrementing counter ...');
     this.counter.set(this.counter() + 1);
+  }
+  incrementShared() {
+    this.sharedSignal.set(this.sharedSignal() + 1);
   }
 
   updateByFive() {

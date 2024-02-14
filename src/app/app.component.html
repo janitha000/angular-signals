@@ -1,10 +1,14 @@
 <h1>Value of counter is {{ counter() }}</h1>
+<h1>Value of shared counter is {{ sharedSignal() }}</h1>
 <h1>Value of derived counter is {{ derivedCounter() }}</h1>
 
 <h1>Value of object name {{ signalObject().name }} {{ signalObject().age }}</h1>
 
 <button (click)="increment()">Increment</button>
+<button (click)="incrementShared()">Increment Shared</button>
 <button (click)="updateByFive()">Update by 5</button>
 <button (click)="updateObject()">Update object</button>
 
 <h2>Not rendering this part {{ renderVal() }}</h2>
+
+<app-secondary></app-secondary>
